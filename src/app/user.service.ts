@@ -59,4 +59,17 @@ export class UserService {
       
     )
   }
+  saveUser(obj,callback){
+    this.user = this.http.post<any>('http://localhost:2018/saveuser',obj)
+    this.user.subscribe(
+      data => {
+        console.log("Success add user",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error add user",err)
+        callback(err)
+      }
+    )
+  }
 }
