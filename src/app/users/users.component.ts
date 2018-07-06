@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk/table';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,14 +7,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-displayedColumns = ['username','email','active','actions']
+displayedColumns = ['username','email','level','active','actions']
 dataSource = []
   constructor(private users:UserService) {
     this.users.getUsers(result=>{
       this.dataSource = result
     })
   }
-
+  userDelete(obj){
+    obj.active = "0"
+    this.users.updateUser(obj,result=>{
+      console.log("Success delete user",result)
+    })
+  }
   ngOnInit() {
   }
 

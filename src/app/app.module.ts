@@ -11,11 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { UserEditComponent } from './user-edit/user-edit.component'
 import { FormsModule } from '@angular/forms';
+import { UserSetpasswordComponent } from './user-setpassword/user-setpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserSetpasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -34,4 +34,29 @@ export class UserService {
       } 
     )
   }
+  updateUser(obj,callback){
+    this.user = this.http.post<any>('http://localhost:2018/updateuser',obj)
+    this.user.subscribe(
+      data => {
+        console.log("Success update user",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error update user",err)
+        callback(err)
+      }
+    )
+  }
+  updatePassword(obj,callback){
+    this.user = this.http.post<any>('http://localhost:2018/changepassword',obj)
+    this.user.subscribe(
+      data => {
+        callback(data)
+      },
+      err => {
+        callback(err)
+      }
+      
+    )
+  }
 }

@@ -3,33 +3,33 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
-    <!-- Position Column -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Username. </th>
       <td mat-cell *matCellDef="let element"> {{element.username}} </td>
     </ng-container>
   
-    <!-- Name Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
   
-    <!-- Weight Column -->
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef> Level </th>
+      <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+    </ng-container>
+  
     <ng-container matColumnDef="active">
       <th mat-header-cell *matHeaderCellDef> Active </th>
       <td mat-cell *matCellDef="let element"> {{element.active}} </td>
     </ng-container>
   
-  
-    <!-- Weight Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
         <mat-select placeholder="Choose action">
-          <mat-option>Detail</mat-option>
           <mat-option routerLink='/useredit/{{element.id}}'>Edit</mat-option>
-          <mat-option>Delete</mat-option>
+          <mat-option routerLink='/usersetpassword/{{element.id}}'>Set Password</mat-option>
+          <mat-option (click)='userDelete(element)'>Delete</mat-option>
         </mat-select>
       </td>
     </ng-container>

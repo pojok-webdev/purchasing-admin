@@ -9,13 +9,18 @@ import { UserService } from '../user.service';
 })
 export class UserEditComponent implements OnInit {
 obj = []
-  constructor(private route:ActivatedRoute,user:UserService) {
-    console.log("ID",route.snapshot.params.id)
-    user.getUser({id:route.snapshot.params.id},result=>{
+  constructor(private route:ActivatedRoute,private user:UserService) {
+    console.log("ID",this.route.snapshot.params.id)
+    user.getUser({id:this.route.snapshot.params.id},result=>{
       this.obj = result[0]
     }) 
   }
-
+  updateUser = obj => {
+    this.user.updateUser(obj,result=>{
+      console.log("Success update user",result)
+      window.location.href = '/users'
+    })
+  }
   ngOnInit() {
   }
 
